@@ -1,4 +1,4 @@
-import files
+import makemodel.files as files
 
 with open(files.DATASET_FILE_JSON, "r") as f:    # ファイルオープン
     for line in f:      # 1行ずつ読み取る
