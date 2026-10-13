@@ -1021,6 +1021,7 @@
     },
 
     "datasets-sadness": {
+        "emotion-id": 3,
         "emotion": "sadness",
         "data": {
             "written": [
@@ -1531,6 +1532,7 @@
     },
 
     "datasets-fun": {
+        "emotion-id": 4,
         "emotion": "fun",
         "data": {
             "written": [
