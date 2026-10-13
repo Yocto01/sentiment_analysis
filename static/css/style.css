@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+body {
+    background-color: rgba(151,225,243,0.9);
+}
+header {
+    width: 60%;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid black;
+}
+textarea {
+    width: 70%;
+    height: 200px;
+    margin: 30px auto;
+    border: 1px solid black;
+}
+
+.container {
+    width: 70%;
+    margin: 50px auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    
+    background-color: whitesmoke;
+    border: 1px solid black; 
+}
+
+.main {
+    padding: 50px 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.result {
+    flex-direction: row;
+}
+
+.classification {
+    width: 95%;
+    height: 150px;
+    margin: 20px auto;
+    border: 1px solid black; 
+    border-radius: 10pt;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.submitbutton {
+    width: 16%;
+    height: 3.0rem;
+    font-size: 20px;
+    background-color: rgba(151,185,243,0.6);
+}
+
+.ms {
+    width: 35%;
+    font-size: 30px;
+    margin: 10px 0 10px 20px;
+}
+
+.sent {
+    width: 20%;
+    font-size: 80px;
+    text-align: center;
+    color: red;
+    margin: 10px;
+}
+
+.desu {
+    width: 35%;
+    font-size: 30px;
+    margin: 70px 20px 10px 0;
+}
+
+.uchiwake {
+    width: 95%;
+    font-size: 20px;
+    margin: 10px auto;
+}
+
+.items {
+    width: 23%;
+    height: 100px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.color-ki {
+    color: hotpink;
+    --gauge-color: hotpink; 
+}
+
+.color-do {
+    color: red;
+    --gauge-color: red;
+}
+
+.color-ai {
+    color: blue;
+    --gauge-color: blue;
+}
+
+.color-raku {
+    color: orange;
+    --gauge-color: orange;
+}
+
+/* ゲージの外枠（グレーの土台） */
+.gauge {
+    width: 90%;
+    height: 20px;
+    background-color: #eee; /* 土台の背景色 */
+    border: 2px solid black; 
+    box-sizing: border-box;
+    overflow: hidden; /* 中身のバーが枠線からはみ出るのを防ぐ */
+    margin: 10px auto;
+}
+
+/* ゲージの中身（色が付くバー） */
+.gauge-bar {
+    height: 100%;
+    background-color: var(--gauge-color); /* ここで各クラスの変数を読み込む */
+}
+
+.border {
+    border: 1px solid black; 
+}
+
