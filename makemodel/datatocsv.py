@@ -1,4 +1,4 @@
-import makemodel.files as files
+import files
 
 with open(files.DATASET_FILE_JSON, "r") as f:    # ファイルオープン
     for line in f:      # 1行ずつ読み取る
@@ -6,7 +6,7 @@ with open(files.DATASET_FILE_JSON, "r") as f:    # ファイルオープン
         replaced = replaced.replace(',', '')    # カンマを消す
         splited = replaced.split()      # スペースで区切ってリストにする
         if len(splited) == 2:       # 要素数が2なら
-            if splited[0] == 'emotion:':     # 中カテゴリIDなら抽出
+            if splited[0] == 'emotion-id:':     # 中カテゴリIDなら抽出
                 category_id = splited[1]
         elif len(splited) == 1:
             if len(splited[0]) >= 5:        # 5文字以上で文章（事例）と認識
