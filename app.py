@@ -49,7 +49,7 @@ def index():
             outputs = net(embed_tensor)
             
         # 温度（出力を極端にする）
-        temperature = 0.1
+        temperature = 2.5
             
         # softmaxを適用し確率を求める
         probs = F.softmax(outputs / temperature, dim=1)[0] * 100
