@@ -88,16 +88,16 @@ net = Net(n_input, n_output, n_hidden)
 net = net.to(device)
 
 # 学習率
-lr = 0.01
+lr = 0.001
 
 # 損失関数：交差エントロピー関数
 criterion = nn.CrossEntropyLoss()
 
-# 最適化関数：勾配降下法
-optimizer = optim.SGD(net.parameters(), lr=lr)
+# 最適化関数：AdamW
+optimizer = optim.AdamW(net.parameters(), lr=lr)
 
 # 繰り返し回数
-num_epochs = 3000
+num_epochs = 2000
 
 # メインループ
 for epoch in range(num_epochs):
