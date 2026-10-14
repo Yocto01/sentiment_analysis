@@ -93,7 +93,7 @@ lr = 0.001
 # 損失関数：交差エントロピー関数
 criterion = nn.CrossEntropyLoss()
 
-# 最適化関数：勾配降下法
+# 最適化関数：AdamW
 optimizer = optim.AdamW(net.parameters(), lr=lr)
 
 # 繰り返し回数
