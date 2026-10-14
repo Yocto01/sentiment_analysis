@@ -171,4 +171,4 @@ for c in range(len(testcase)):
     print(f"{top_numpy[c]+1},{testcase[c]}")
 
 
-np.save("predict_model.npy", net)
+torch.save(net.state_dict(), 'predict_model.pth')
