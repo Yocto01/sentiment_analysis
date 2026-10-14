@@ -5,10 +5,57 @@
         <title>文章で感情分析</title>
         <meta name="description" content="文章を入力してもらい、その文章が喜怒哀楽のいずれのものなのか判別します。">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
 
     <body>
-        <h1>文章で感情分析</h1>
+        <div class="container main">
+            <header>
+                <h1>文章で感情分析</h1>
+            </header>
+            <form method="POST" action="/">
+                <textarea name="content" placeholder="文章を入力... （例：メロスは激怒した。）">{{ user_input if user_input else '' }}</textarea>
+                <input type="submit" class="submitbutton" value="送信">
+            </form>
+
+            {% if result_text %}
+            <div class="container result">
+                <p class="ms">最も強い感情は...</p>
+                <p class="sent"><span class="{{ result_class }}">{{ result_text }}</span></p>
+                <p class="desu">です。</p>
+                <div class="container classification">
+                    <p class="uchiwake">内訳：</p>
+                    <div class="items">
+                        <p><label for="percent-ki"><span class="color-ki">喜</span>：{{ percent_ki }}％</label></p>
+                        <!-- div に変更し、style で中身の幅（％）を指定します -->
+                        <div id="percent-ki" class="gauge color-ki">
+                            <div class="gauge-bar" style="width: {{ percent_ki }}%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <p><label for="percent-do"><span class="color-do">怒</span>：{{ percent_do }}％</label></p>
+                        <div id="percent-do" class="gauge color-do">
+                            <div class="gauge-bar" style="width: {{ percent_do }}%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <p><label for="percent-ai"><span class="color-ai">哀</span>：{{ percent_ai }}％</label></p>
+                        <div id="percent-ai" class="gauge color-ai">
+                            <div class="gauge-bar" style="width: {{ percent_ai }}%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <p><label for="percent-raku"><span class="color-raku">楽</span>：{{ percent_raku }}％</label></p>
+                        <div id="percent-raku" class="gauge color-raku">
+                            <div class="gauge-bar" style="width: {{ percent_raku }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
     </body>
 </html>

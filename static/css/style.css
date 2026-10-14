@@ -12,7 +12,12 @@ header {
     text-align: center;
     border: 2px solid black;
 }
+form {
+    text-align: center;
+    width: 100%;
+}
 textarea {
+    display: block;  
     width: 70%;
     height: 200px;
     margin: 30px auto;

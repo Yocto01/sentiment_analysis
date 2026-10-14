@@ -31,6 +31,7 @@ net.load_state_dict(torch.load('model/predict_model.pth', map_location=device))
 net.eval()
 
 sentiment_value = ['喜', '怒', '哀', '楽']
+sentiment_class = ['color-ki', 'color-do', 'color-ai', 'color-raku']
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -47,8 +48,11 @@ def index():
         with torch.no_grad(): # 推論時は勾配計算をオフにすると少し軽くなります
             outputs = net(embed_tensor)
             
+        # 温度（出力を極端にする）
+        temperature = 0.1
+            
         # softmaxを適用し確率を求める
-        probs = F.softmax(outputs, dim=1)[0] * 100
+        probs = F.softmax(outputs / temperature, dim=1)[0] * 100
         probs_list = probs.cpu().tolist()
         
         top_index = torch.topk(outputs, 1, dim=1)[1]
@@ -61,11 +65,12 @@ def index():
         return render_template("index.html", 
                                user_input=user_text,
                                result_text=sentiment_value[top_index],
+                               result_class=sentiment_class[top_index],
                                # 小数第1位で丸める
-                               ki_percent=round(probs_list[0], 1),
-                               do_percent=round(probs_list[1], 1),
-                               ai_percent=round(probs_list[2], 1),
-                               raku_percent=round(probs_list[3], 1))
+                               percent_ki=round(probs_list[0], 1),
+                               percent_do=round(probs_list[1], 1),
+                               percent_ai=round(probs_list[2], 1),
+                               percent_raku=round(probs_list[3], 1))
     
     # 最初の画面（GETリクエスト）
     return render_template("index.html")
