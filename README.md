@@ -11,3 +11,6 @@ Pythonパッケージ
 - fugashi
 - ipadic
 - Flask
+
+# 実行方法
+$ flask run
